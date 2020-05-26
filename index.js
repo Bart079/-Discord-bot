@@ -91,14 +91,7 @@ bot.on("message", async message => {
                 msg.edit(embed)
             });
     }
- 
-        let reason = args.slice(1).join(' ');
-        if(!reason) reason = "No reason provided";
- 
-        await member.kick(reason)
-            .catch(e => message.reply(`Sorry I couldn't kick them! Error: ${e}`));
-        message.reply(`:white_check_mark: User kicked!`);
-    }
+
 
     if(cmd === `${prefix}cat`) {
         let msg = await message.channel.send("Fetching a cute cat, please wait a second!");
