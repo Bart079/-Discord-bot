@@ -64,6 +64,9 @@ bot.on("message", async message => {
     if(cmd === `${prefix}commands`){
     return message.reply("\n```commands = .commands``` \n```prefix = . ```  \n```website = .website```   \n```youtube = .youtube```    \n```swapper download = .swapper```  \n```memes = .meme```   \n```cat = .cat```")
     }
+    if(cmd === `${prefix}lol`){
+        return message.reply("\n```Your gay``` ")
+    }
 
     if(cmd === `${prefix}meme`) {
         let msg = await message.channel.send("Fetching a meme, please wait a second!");
@@ -81,7 +84,7 @@ bot.on("message", async message => {
 
     if(cmd === `${prefix}cat`) {
         let msg = await message.channel.send("Fetching a cute cat, please wait a second!");
-        fetch('http://aws.random.cat/meow')
+        fetch('http://aws.random.cat/meow   ')
             .then(res => res.json())
             .then(json => {
                 let embed = new Discord.MessageEmbed()
