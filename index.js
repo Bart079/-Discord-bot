@@ -2,9 +2,20 @@ const Discord = require('discord.js');
 const fetch = require('node-fetch');
 const config = require('./config.json');
 const colors = require('./colors.json');
+const bot = new Discord.Client();
 
 const bot = new Discord.Client({disableEveryone: true});
 const fs = require("fs");
+bot.commands = new Discord.Collection();
+
+const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith(".js"));
+for(const file of commandFiles){
+    const command = requiere(`./commands/${file}`);
+
+    bot.commands.set(command.name, command);
+}
+
+
 
 
 
@@ -21,10 +32,10 @@ bot.on("message", async message => {
     let cmd = messageArray[0];
     let args = messageArray.slice[0];
 
-    if(cmd === `${prefix}ping`) {
-        const msg = await message.channel.send("Pinging...");
-        msg.edit(`Pong! Latency is ${msg.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`);
-    }
+    //if(cmd === `${prefix}ping`) {
+      //  const msg = await message.channel.send("Pinging...");
+       // msg.edit(`Pong! Latency is ${msg.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`);
+   // }
 
     if(cmd === `${prefix}website`){
         return message.reply("Best coding website right now click on the link and come in to heaven of codes https://sites.google.com/view/god-coding-v2-smoontie-gay/")
