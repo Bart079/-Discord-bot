@@ -78,6 +78,20 @@ bot.on("message", async message => {
                 msg.edit(embed)
             });
     }
+
+    if(cmd === `${prefix}cat`) {
+        let msg = await message.channel.send("Fetching a cute cat, please wait a second!");
+        fetch('http://aws.random.cat/meow')
+            .then(res => res.json())
+            .then(json => {
+                let embed = new Discord.MessageEmbed()
+                    .setTitle(json.title)
+                    .setColor(colors.red)
+                    .setImage(json.url)
+                    .setFooter(`Link: ${json.postLink} | Subreddit: ${json.subreddit}`)
+                msg.edit(embed)
+            });
+    }
 })
     
 
