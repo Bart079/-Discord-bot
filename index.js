@@ -6,26 +6,6 @@ const colors = require('./colors.json');
 const bot = new Discord.Client({disableEveryone: true});
 const fs = require("fs");
 
-fs.readdir("./commands/", (err, files) => {
-
-    if (err) console.log(err);
-
-    var jsFiles = files.filter(f => f.split(".").pop() === "js");
-
-    if(jsFiles.length <= 0) {
-        console.log("Couldn't find any files");
-        return;
-    }
-
-    jsFiles.forEach((f,i) => {
-
-        var fileGet = require(`./commands/${f}`);
-        console.log(`The File ${f} has loaded`);
-
-        bot.commands.set(fileGet.help.name, FileGet);
-    })
-
-});
 
 
 bot.on("ready", async () => {
