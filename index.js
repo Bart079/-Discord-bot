@@ -110,7 +110,7 @@ bot.on("message", async message => {
     if (cmd === `${prefix}kick`) {
         //kick @spelerNaam redenen hier 
 
-        var argument = message.content.slice(prefix.length).split(/ +/);
+        var args = message.content.slice(prefix.length).split(/ +/);
 
         if(!message.member.hasPermission("KICK_MEMBERS")) return message.reply("you can not use that command")
 
@@ -181,7 +181,7 @@ bot.on("message", async message => {
 }
 if (cmd === `${prefix}ban`) {
  
-    const argument = message.content.slice(prefix.length).split(/ +/);
+    const args = message.content.slice(prefix.length).split(/ +/);
 
     if (!args[1]) return message.reply("No user given.");
 
