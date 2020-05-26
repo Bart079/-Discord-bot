@@ -126,7 +126,9 @@ bot.on("message", async message => {
  
         if (!kickUser) return message.reply("No user found.");
 
-        var embed = new discord.MessageEmbed()
+        const Discord = require('discord.js')
+
+        var embed = new Discord.MessageEmbed()
         .setColor("#ff0000")
         .setThumbnail(kickUser.user.displayAvatarURL)
         .setFooter(message.member.displayName, message.author.displayAvatarURL)
@@ -135,7 +137,7 @@ bot.on("message", async message => {
         **Kicked by:** ${message.author}
         **Reason: ** ${reason}`);
 
-    var embedPrompt = new discord.MessageEmbed()
+    var embedPrompt = new Discord.MessageEmbed()
         .setColor("groen")
         .setAuthor("Please react in 30 sec.")
         .setDescription(`Are you sure you want to kick ${kickUser}?`); 
