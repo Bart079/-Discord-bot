@@ -2,19 +2,9 @@ const Discord = require('discord.js');
 const fetch = require('node-fetch');
 const config = require('./config.json');
 const colors = require('./colors.json');
+const fs = require('fs').promises;
+const path = require('path')
 const bot = new Discord.Client();
-
-
-const fs = require("fs");
-bot.commands = new Discord.Collection();
-
-const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith(".js"));
-for(const file of commandFiles){
-    const command = require(`./commands/${file}`);
-
-    bot.commands.set(command.name, command);
-}
-
 
 
 
@@ -32,10 +22,12 @@ bot.on("message", async message => {
     let cmd = messageArray[0];
     let args = messageArray.slice[0];
 
-    //if(cmd === `${prefix}ping`) {
-      //  const msg = await message.channel.send("Pinging...");
-       // msg.edit(`Pong! Latency is ${msg.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`);
-   // }
+
+    //commands
+    if(cmd === `${prefix}ping`) {
+        const msg = await message.channel.send("Pinging...");
+        msg.edit(`Pong! Latency is ${msg.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`);
+    }
 
     if(cmd === `${prefix}website`){
         return message.reply("Best coding website right now click on the link and come in to heaven of codes https://sites.google.com/view/god-coding-v2-smoontie-gay/")
@@ -123,8 +115,24 @@ bot.on("message", async message => {
                 msg.edit(embed)
             });
     }
+    // command export reader
+    (async function registerCommands(dir = 'commands') {
+        // Read the directory/file.
+        let files = await fs.readdir(path.join(__dirname, dir));
+        // Loop through each file.
+        for(let file of files) {
+            let stat = await fs.lstat(path.join(__dirname, dir, file));
+            if(stat.isDirectory()) // If file is a directory, recursive call recurDir
+                registerModels(path.join(dir, file));
+            else {
+                // Check if file is a .js file.
+                if(file.endsWith(".js")) {
+
+                }
+            }
+        }
+    })
 })
-    
 
-
+// bot login dont edit
 bot.login(process.env.token);
