@@ -183,23 +183,23 @@ bot.on("message", async message => {
 }
 if (cmd === `${prefix}ban`) {
  
-    const args = message.content.slice(prefix.length).split(/ +/);
+    const argument = message.content.slice(prefix.length).split(/ +/);
 
-    if (!args[1]) return message.reply("No user given.");
+    if (!argument[1]) return message.reply("No user given.");
 
-    if (!args[2]) return message.reply("Please give a reason.");
+    if (!argument[2]) return message.reply("Please give a reason.");
 
     if (!message.member.hasPermission("BAN_MEMBERS")) return message.reply("you can not use that command");
 
     if (!message.guild.me.hasPermission("BAN_MEMBERS")) return message.reply("you dont have premissions to do that");
 
-    var banUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[1]));
+    var banUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(argument[1]));
 
-    var reason = args.slice(2).join(" ");
+    var reason = argument.slice(2).join(" ");
 
     if (!banUser) return message.reply("No user found.");
 
-    var embed = new discord.MessageEmbed()
+    var embed = new Discord.MessageEmbed()
         .setColor("#ff0000")
         .setThumbnail(banUser.user.displayAvatarURL)
         .setFooter(message.member.displayName, message.author.displayAvatarURL)
@@ -208,7 +208,7 @@ if (cmd === `${prefix}ban`) {
         **Banned by:** ${message.author}
         **Reason: ** ${reason}`);
 
-    var embedPrompt = new discord.MessageEmbed()
+    var embedPrompt = new Discord.MessageEmbed()
         .setColor("groen")
         .setAuthor("Please react in 30 sec.")
         .setDescription(`Are you sure you want to ban ${banUser}?`);
