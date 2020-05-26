@@ -27,9 +27,6 @@ fs.readdir("./commands/", (err, files) => {
 
 });
 
-var commands = bot.commands.get(command.slice(prefix.length));
-
-if(commands) commands.run(bot, message, arguments);
 
 bot.on("ready", async () => {
     console.log(`${bot.user.username} is online!`)
