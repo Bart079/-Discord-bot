@@ -121,9 +121,9 @@ bot.on("message", async message => {
     }
 
     if (cmd === `${prefix}kick`) {
-        //kick @spelerNaam redenen hier
+        //kick @spelerNaam redenen hier 
 
-        var args = message.content.slice(prefix.length).split(/ +/);
+        var argument = message.content.slice(prefix.length).split(/ +/);
 
         if(!message.member.hasPermission("KICK_MEMBERS")) return message.reply("you can not use that command")
 
