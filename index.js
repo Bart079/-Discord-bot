@@ -192,9 +192,9 @@ bot.on("message", async message => {
     });
 
 }
-if (command === `${prefix}ban`) {
+if (cmd === `${prefix}ban`) {
  
-    const args = message.content.slice(prefix.length).split(/ +/);
+    const argument = message.content.slice(prefix.length).split(/ +/);
 
     if (!args[1]) return message.reply("No user given.");
 
