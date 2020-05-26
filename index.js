@@ -5,7 +5,7 @@ const colors = require('./colors.json');
 const fs = require('fs').promises;
 const path = require('path')
 const bot = new Discord.Client();
-client.commands = new Map();
+
 
 
 
