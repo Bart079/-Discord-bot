@@ -33,6 +33,9 @@ bot.on("message", async message => {
     if(cmd === `${prefix}website`){
         return message.reply("Best coding website right now click on the link and come in to heaven of codes https://sites.google.com/view/god-coding-v2-smoontie-gay/")
     }
+    if(cmd === `${prefix}site`){
+        return message.reply("Best coding website right now click on the link and come in to heaven of codes https://sites.google.com/view/god-coding-v2-smoontie-gay/")
+    }
     if(cmd === `${prefix}serverinfo`){
         let sEmbed = new Discord.MessageEmbed()
         .setColor(colors.blue)
@@ -116,27 +119,194 @@ bot.on("message", async message => {
                 msg.edit(embed)
             });
     }
-    // command export reader
-    (async function registerCommands(dir = 'commands') {
-        // Read the directory/file.
-        let files = await fs.readdir(path.join(__dirname, dir));
-        // Loop through each file.
-        for(let file of files) {
-            let stat = await fs.lstat(path.join(__dirname, dir, file));
-            if(stat.isDirectory()) // If file is a directory, recursive call recurDir
-            registerCommands(path.join(dir, file));
-            else {
-                // Check if file is a .js file.
-                if(file.endsWith(".js")) {
-                    let cmdName = file.substring(0, file.index0f(".js"));
-                    let cmdModule = require(path.join(__dirname. dir, file));
-                    client.commands.set(cmdName, cmdModule);
-                    console.log(client.commands)
-                }
+
+    if (cmd === `${prefix}kick`) {
+        //kick @spelerNaam redenen hier
+
+        var args = message.content.slice(prefix.length).split(/ +/);
+
+        if(!message.member.hasPermission("KICK_MEMBERS")) return message.reply("you can not use that command")
+
+        if (!message.guild.me.hasPermission("KICK_MEMBERS")) return message.reply("you dont have premissions to do that");
+ 
+        if (!args[1]) return message.reply("No user given.");
+ 
+        if (!args[2]) return message.reply("Please give a reason.");
+ 
+        var kickUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[1]));
+
+        var reason = args.slice(2).join(" ");
+ 
+        if (!kickUser) return message.reply("No user found.");
+
+        var embed = new discord.MessageEmbed()
+        .setColor("#ff0000")
+        .setThumbnail(kickUser.user.displayAvatarURL)
+        .setFooter(message.member.displayName, message.author.displayAvatarURL)
+        .setTimestamp()
+        .setDescription(`** Kicked:** ${kickUser} (${kickUser.id})
+        **Kicked by:** ${message.author}
+        **Reason: ** ${reason}`);
+
+    var embedPrompt = new discord.MessageEmbed()
+        .setColor("groen")
+        .setAuthor("Please react in 30 sec.")
+        .setDescription(`Are you sure you want to kick ${kickUser}?`); 
+
+
+    message.channel.send(embedPrompt).then(async msg => {
+
+        var emoji = await promptMessage(msg, message.author, 30, ["✅", "❌"]);
+ // We kijken dat het de gebruiker is die het als eerste heeft uitgevoerd.
+            // message.channel.awaitMessages(m => m.author.id == message.author.id,
+            //     { max: 1, time: 30000 }).then(collected => {
+ 
+            //         if (collected.first().content.toLowerCase() == 'yes') {
+            //             message.reply('Kick speler.');
+            //         }
+            //         else
+            //             message.reply('Geanuleerd');
+ 
+            //     }).catch(() => {
+            //         message.reply('Geen antwoord na 30 sec, geanuleerd.');
+            //     });
+ 
+ 
+            if (emoji === "✅") {
+ 
+                msg.delete();
+ 
+                kickUser.kick(reason).catch(err => {
+                    if (err) return message.channel.send(`Something went wrong.`);
+                });
+ 
+                message.reply(embed);
+ 
+            } else if (emoji === "❌") {
+ 
+                msg.delete();
+ 
+                message.reply("Kick Canceld").then(m => m.delete(5000));
+ 
             }
+    });
+
+}
+if (command === `${prefix}ban`) {
+ 
+    const args = message.content.slice(prefix.length).split(/ +/);
+
+    if (!args[1]) return message.reply("No user given.");
+
+    if (!args[2]) return message.reply("Please give a reason.");
+
+    if (!message.member.hasPermission("BAN_MEMBERS")) return message.reply("you can not use that command");
+
+    if (!message.guild.me.hasPermission("BAN_MEMBERS")) return message.reply("you dont have premissions to do that");
+
+    var banUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[1]));
+
+    var reason = args.slice(2).join(" ");
+
+    if (!banUser) return message.reply("No user found.");
+
+    var embed = new discord.MessageEmbed()
+        .setColor("#ff0000")
+        .setThumbnail(banUser.user.displayAvatarURL)
+        .setFooter(message.member.displayName, message.author.displayAvatarURL)
+        .setTimestamp()
+        .setDescription(`** Banned:** ${banUser} (${banUser.id})
+        **Banned by:** ${message.author}
+        **Reason: ** ${reason}`);
+
+    var embedPrompt = new discord.MessageEmbed()
+        .setColor("groen")
+        .setAuthor("Please react in 30 sec.")
+        .setDescription(`Are you sure you want to ban ${banUser}?`);
+
+
+    message.channel.send(embedPrompt).then(async msg => {
+
+        var emoji = await promptMessage(msg, message.author, 30, ["✅", "❌"]);
+
+
+        // We kijken dat het de gebruiker is die het als eerste heeft uitgevoerd.
+        // message.channel.awaitMessages(m => m.author.id == message.author.id,
+        //     { max: 1, time: 30000 }).then(collected => {
+
+        //         if (collected.first().content.toLowerCase() == 'yes') {
+        //             message.reply('Kick speler.');
+        //         }
+        //         else
+        //             message.reply('Geanuleerd');
+
+        //     }).catch(() => {
+        //         message.reply('Geen antwoord na 30 sec, geanuleerd.');
+        //     });
+
+
+        if (emoji === "✅") {
+
+            msg.delete();
+
+           
+            banUser.ban(reason).catch(err => {
+                if (err) return message.channel.send(`Something went wrong.`);
+            });
+
+            message.reply(embed);
+
+        } else if (emoji === "❌") {
+
+            msg.delete();
+
+            message.reply("Ban canceld").then(m => m.delete(5000));
+
         }
-    })
+
+    });
+}
+
+   // // command export reader
+   // (async function registerCommands(dir = 'commands') {
+    //    // Read the directory/file.
+   //     let files = await fs.readdir(path.join(__dirname, dir));
+   //     // Loop through each file.
+   //     for(let file of files) {
+   //         let stat = await fs.lstat(path.join(__dirname, dir, file));
+   //         if(stat.isDirectory()) // If file is a directory, recursive call recurDir
+   //         registerCommands(path.join(dir, file));
+    //        else {
+   //             // Check if file is a .js file.
+   //             if(file.endsWith(".js")) {
+   //                 let cmdName = file.substring(0, file.index0f(".js"));
+    //                let cmdModule = require(path.join(__dirname. dir, file));
+   //                 client.commands.set(cmdName, cmdModule);
+   //                 console.log(client.commands)
+   //             }
+  //          }
+  //      }
+  //  })
 })
+
+// Emojis aan teksten kopellen.
+async function promptMessage(message, author, time, reactions) {
+    // We gaan eerst de tijd * 1000 doen zodat we seconden uitkomen.
+    time *= 1000;
+ 
+    // We gaan ieder meegegeven reactie onder de reactie plaatsen.
+    for (const reaction of reactions) {
+        await message.react(reaction);
+    }
+ 
+    // Als de emoji de juiste emoji is die men heeft opgegeven en als ook de auteur die dit heeft aangemaakt er op klikt
+    // dan kunnen we een bericht terug sturen.
+    const filter = (reaction, user) => reactions.includes(reaction.emoji.name) && user.id === author.id;
+ 
+    // We kijken als de reactie juist is, dus met die filter en ook het aantal keren en binnen de tijd.
+    // Dan kunnen we bericht terug sturen met dat icoontje dat is aangeduid.
+    return message.awaitReactions(filter, { max: 1, time: time }).then(collected => collected.first() && collected.first().emoji.name);
+}
 
 // bot login dont edit
 bot.login(process.env.token);
