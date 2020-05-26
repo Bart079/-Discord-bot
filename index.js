@@ -119,6 +119,7 @@ bot.on("message", async message => {
     (async function registerCommands(dir = 'commands') {
         // Read the directory/file.
         let files = await fs.readdir(path.join(__dirname, dir));
+        console.log(files);
         // Loop through each file.
         for(let file of files) {
             let stat = await fs.lstat(path.join(__dirname, dir, file));
