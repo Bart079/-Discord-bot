@@ -5,13 +5,14 @@ const colors = require('./colors.json');
 const fs = require('fs').promises;
 const path = require('path')
 const bot = new Discord.Client();
+client.commands = new Map();
 
 
 
 
 bot.on("ready", async () => {
     console.log(`${bot.user.username} is online!`)
-    bot.user.setActivity("Over God Coding | &", {type: "WATCHING"});
+    bot.user.setActivity("Over God Coding | .", {type: "WATCHING"});
 })
 
 bot.on("message", async message => {
@@ -119,16 +120,18 @@ bot.on("message", async message => {
     (async function registerCommands(dir = 'commands') {
         // Read the directory/file.
         let files = await fs.readdir(path.join(__dirname, dir));
-        console.log(files);
         // Loop through each file.
         for(let file of files) {
             let stat = await fs.lstat(path.join(__dirname, dir, file));
             if(stat.isDirectory()) // If file is a directory, recursive call recurDir
-                registerModels(path.join(dir, file));
+            registerCommands(path.join(dir, file));
             else {
                 // Check if file is a .js file.
                 if(file.endsWith(".js")) {
-
+                    let cmdName = file.substring(0, file.index0f(".js"));
+                    let cmdModule = require(path.join(__dirname. dir, file));
+                    client.commands.set(cmdName, cmdModule);
+                    console.log(client.commands)
                 }
             }
         }
