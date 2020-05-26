@@ -62,7 +62,7 @@ bot.on("message", async message => {
         return message.reply("\n```Invalid argument``` ")
     }
     if(cmd === `${prefix}commands`){
-    return message.reply("\n```commands = .commands``` \n```prefix = . ```  \n```website = .website```   \n```youtube = .youtube```    \n```swapper download = .swapper```  \n```memes = .meme")
+    return message.reply("\n```commands = .commands``` \n```prefix = . ```  \n```website = .website```   \n```youtube = .youtube```    \n```swapper download = .swapper```  \n```memes = .meme```   \n```cat = .cat```")
     }
 
     if(cmd === `${prefix}meme`) {
