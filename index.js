@@ -82,6 +82,20 @@ bot.on("message", async message => {
             });
     }
 
+    if(cmd === `${prefix}kick`) {
+        if(!message.member.hasPermission("ADMINISTRATOR")) return message.reply('Sorry you do not have permission!');
+        let member = message.mentions.members.first() || message.guild.members.get(args[0]);
+        if(!member) return message.reply("Please mention a valid user");
+        if(!member.kickable) return message.channel.send("Sorry I cannot kick that person! Do they have a higher role?");
+ 
+        let reason = args.slice(1).join(' ');
+        if(!reason) reason = "No reason provided";
+ 
+        await member.kick(reason)
+            .catch(e => message.reply(`Sorry I couldn't kick them! Error: ${e}`));
+        message.reply(`:white_check_mark: User kicked!`);
+    }
+
     if(cmd === `${prefix}cat`) {
         let msg = await message.channel.send("Fetching a cute cat, please wait a second!");
         fetch('http://aws.random.cat/meow   ')
