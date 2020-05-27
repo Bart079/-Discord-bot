@@ -22,6 +22,8 @@ bot.on("message", async message => {
     let messageArray = message.content.split(" ")
     let cmd = messageArray[0];
     let args = messageArray.slice[0];
+    let messageArray = message.content.split(" ");
+    let command = messageArray[0];
 
 
     //commands
@@ -106,38 +108,11 @@ bot.on("message", async message => {
                 msg.edit(embed)
             });
     }
-    if(cmd === `${prefix}suggest`) {
-    // reasoning definition
-    let suggestion = args.join(" ");
-    if (!suggestion)
-      return message.channel
-        .send(`Please provide a suggestion!`)
-        .then(m => m.delete(15000));
-
-    // grab reports channel 
-    let sChannel = message.guild.channels.find(x => x.name === "suggestions");
-      if(!sChannel) return message.channel.send("You dident have channel with name `suggestions`")
-    // send to reports channel and add tick or cross
-    message.channel 
-      .send("Your suggestion has been filled to the staff team. Thank you!")
-      .then(m => m.delete(15000));
-    let suggestembed = new MessageEmbed()
-      .setFooter(bot.user.username, bot.user.displayAvatarURL)
-      .setTimestamp()
-      .addField(`New Suggestion from:`, `**${message.author.tag}**`)
-      .addField(`Suggestion:`, `${suggestion}\n**Its your choice!**`)
-      .setColor('#ff2052');
-    sChannel.send(suggestembed).then(async msg => {
-      await msg.react("✅");
-      await msg.react("❌");
-    });
-  }
-});
-
+})  
     
-    if(command === `${prefix}kick`) {
-        //kick @spelerNaam redenen hier 
-
+    if(cmd === `${prefix}kick`) {
+        //kick @spelerNaam redenen hier
+        
         var argument = message.content.slice(prefix.length).split(/ +/);
 
         if(!message.member.hasPermission("KICK_MEMBERS")) return message.reply("you can not use that command")
