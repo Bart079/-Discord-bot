@@ -106,7 +106,7 @@ bot.on("message", async message => {
                 msg.edit(embed)
             });
     }
-    if (cmd === `${prefix}suggest`) {
+    if(cmd === `${prefix}suggest`) {
     // reasoning definition
     let suggestion = args.join(" ");
     if (!suggestion)
