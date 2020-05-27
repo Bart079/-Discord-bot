@@ -108,7 +108,7 @@ bot.on("message", async message => {
     }
 })  
     
-    if(cmd === `${prefix}kick`) {
+    if (cmd === `${prefix}kick`) {
         //kick @spelerNaam redenen hier
         
         var argument = message.content.slice(prefix.length).split(/ +/);
@@ -183,8 +183,11 @@ bot.on("message", async message => {
                 message.reply("Kick Canceld").then(m => m.delete(5000));
  
             }
-    });
-}
+        });
+    } 
+
+
+
 // ban command
     if(cmd === `${prefix}ban`) {
  
