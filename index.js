@@ -205,8 +205,8 @@ if (cmd === `${prefix}ban`) {
 
     var embed = new Discord.MessageEmbed()
         .setColor("#ff0000")
-        .setThumbnail(banUser.user.displayAvatarURL)
-        .setFooter(message.member.displayName, message.author.displayAvatarURL)
+        .setThumbnail(banUser.user.displayAvatarURL())
+        .setFooter(message.member.displayName, message.author.displayAvatarURL())
         .setTimestamp()
         .setDescription(`** Banned:** ${banUser} (${banUser.id})
         **Banned by:** ${message.author}
