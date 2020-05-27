@@ -130,17 +130,21 @@ bot.on("message", async message => {
 
         var embed = new Discord.MessageEmbed()
         .setColor("#ff0000")
-        .setThumbnail(kickUser.user.displayAvatarURL)
-        .setFooter(message.member.displayName, message.author.displayAvatarURL)
+        .setThumbnail(kickUser.user.displayAvatarURL())
+        .setFooter(message.member.displayName, message.author.displayAvatarURL())
         .setTimestamp()
         .setDescription(`** Kicked:** ${kickUser} (${kickUser.id})
         **Kicked by:** ${message.author}
         **Reason: ** ${reason}`);
 
-    var embedPrompt = new Discord.MessageEmbed()
+        var embedPrompt = new Discord.MessageEmbed()
         .setColor("groen")
         .setAuthor("Please react in 30 sec.")
         .setDescription(`Are you sure you want to kick ${kickUser}?`); 
+
+
+        var embed1 = new Discord.MessageEmbed()
+        .setColor("red")
 
 
     message.channel.send(embedPrompt).then(async msg => {
@@ -169,7 +173,7 @@ bot.on("message", async message => {
                     if (err) return message.channel.send(`Something went wrong.`);
                 });
  
-                message.reply(embed);
+                message.channel.send(embed);
  
             } else if (emoji === "❌") {
  
