@@ -111,19 +111,19 @@ bot.on("message", async message => {
     if(cmd === `${prefix}kick`) {
         //kick @spelerNaam redenen hier
         
-        var args = message.content.slice(prefix.length).split(/ +/);
+        var argument = message.content.slice(prefix.length).split(/ +/);
 
         if(!message.member.hasPermission("KICK_MEMBERS")) return message.reply("you can not use that command")
 
         if (!message.guild.me.hasPermission("KICK_MEMBERS")) return message.reply("you dont have premissions to do that");
  
-        if (!args[1]) return message.reply("No user given.");
+        if (!argument[1]) return message.reply("No user given.");
  
-        if (!args[2]) return message.reply("Please give a reason.");
+        if (!argument[2]) return message.reply("Please give a reason.");
  
-        var kickUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[1]));
+        var kickUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(argument[1]));
 
-        var reason = args.slice(2).join(" ");
+        var reason = argument.slice(2).join(" ");
  
         if (!kickUser) return message.reply("No user found.");
 
@@ -148,7 +148,7 @@ bot.on("message", async message => {
         .setColor("red")
 
 
-    message.channel.send(embedPrompt).then(async msg => {
+        message.channel.send(embedPrompt).then(async msg => {
 
         var emoji = await promptMessage(msg, message.author, 30, ["✅", "❌"]);
         // We kijken dat het de gebruiker is die het als eerste heeft uitgevoerd.
