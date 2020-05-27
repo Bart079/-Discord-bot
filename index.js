@@ -178,7 +178,7 @@ bot.on("message", async message => {
     message.channel.send(embedPrompt).then(async msg => {
 
         var emoji = await promptMessage(msg, message.author, 30, ["✅", "❌"]);
- // We kijken dat het de gebruiker is die het als eerste heeft uitgevoerd.
+        // We kijken dat het de gebruiker is die het als eerste heeft uitgevoerd.
             // message.channel.awaitMessages(m => m.author.id == message.author.id,
             //     { max: 1, time: 30000 }).then(collected => {
  
@@ -210,9 +210,8 @@ bot.on("message", async message => {
                 message.reply("Kick Canceld").then(m => m.delete(5000));
  
             }
-    });
-
-}
+        });
+    }
 // ban command
     if(cmd === `${prefix}ban`) {
  
