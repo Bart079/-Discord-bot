@@ -243,7 +243,7 @@ if (cmd === `${prefix}ban`) {
                 if (err) return message.channel.send(`Something went wrong.`);
             });
 
-            message.reply(embed);
+            message.channel.send(embed);
 
         } else if (emoji === "❌") {
 
