@@ -135,7 +135,7 @@ bot.on("message", async message => {
 });
 
     //kick command
-    if(cmd === `${prefix}kick`) {
+    if(cmd === `${prefix}kick`){
         //kick @spelerNaam redenen hier 
 
         var argument = message.content.slice(prefix.length).split(/ +/);
@@ -214,7 +214,7 @@ bot.on("message", async message => {
 
 }
 // ban command
-if(cmd === `${prefix}ban`) {
+if(cmd === `${prefix}ban`){
  
     const argument = message.content.slice(prefix.length).split(/ +/);
 
