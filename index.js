@@ -183,8 +183,8 @@ bot.on("message", async message => {
                 message.reply("Kick Canceld").then(m => m.delete(5000));
  
             }
-        });
-    }
+    });
+}
 // ban command
     if(cmd === `${prefix}ban`) {
  
