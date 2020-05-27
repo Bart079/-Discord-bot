@@ -134,8 +134,8 @@ bot.on("message", async message => {
   }
 });
 
-    //kick command
-        if(cmd === `${prefix}kick`) {
+    
+    if(cmd === `${prefix}kick`) {
         //kick @spelerNaam redenen hier 
 
         var argument = message.content.slice(prefix.length).split(/ +/);
