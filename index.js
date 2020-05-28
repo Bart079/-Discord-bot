@@ -94,7 +94,7 @@ bot.on("message", async message => {
 
     if(cmd === `${prefix}cat`) {
         let msg = await message.channel.send("Fetching a cute cat, please wait a second!");
-        fetch('http://aws.random.cat/meow   ')
+        fetch('http://aws.random.cat/meow')
             .then(res => res.json())
             .then(json => {
                 let embed = new Discord.MessageEmbed()
@@ -106,6 +106,17 @@ bot.on("message", async message => {
             });
     }
 
+    if(cmd === `${prefix}commands`) {
+
+        var CommandEmbed = new Discord.MessageEmbed()
+            .setTitle("Commands")
+            .setDescription("With commands you can get info or you can do some other cool stuff")
+            .setThumbnail(bot.user.displayAvatarURL())
+            .setColor("orangje")
+            .addFields(
+                {name: "Website", value:"https://sites.google.com/view/god-coding-v2-smoontie-gay/"}
+            )
+    }
     if (cmd === `${prefix}kick`) {
  
         const args = message.content.slice(prefix.length).split(/ +/);
@@ -254,6 +265,36 @@ bot.on("message", async message => {
             }
     
         });
+    }
+    // !clear aantal
+    if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("Je hebt geen toestemming");
+
+    if (!args[0]) return message.reply("Geef een aantal op dat je weg wilt halen");
+
+    if (Number.isInteger(parseInt(args[0]))) {
+
+        var aantal = parseInt(args[0]) + 1;
+
+        message.channel.bulkDelete(aantal).then(() => { 
+
+            if (args[0] == 0) {
+
+                message.reply(`Ben je loemp ik kan toch niet 0 berichten verwijderen?`).then(msg => msg.delete({timeout: 3000}));
+            
+            } else if (args[0] == 1) {
+            
+                message.reply(`Ik heb 1 bericht verwijderd.`).then(msg => msg.delete({timeout: 3000}));
+            
+            } else {
+            
+                message.reply(`Ik heb ${args[0]} berichten verwijderd.`).then(msg => msg.delete({timeout: 3000}));
+            
+            }
+
+        });
+
+    } else {
+        return message.reply("Geef een getal op.");
     }
 })  
 
