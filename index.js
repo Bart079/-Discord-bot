@@ -126,8 +126,8 @@ bot.on("message", async message => {
     
         var embed = new Discord.MessageEmbed()
             .setColor("#ff0000")
-            .setThumbnail(kickUser.user.displayAvatarURL)
-            .setFooter(message.member.displayName, message.author.displayAvatarURL)
+            .setThumbnail(kickUser.user.displayAvatarURL())
+            .setFooter(message.member.displayName, message.author.displayAvatarURL())
             .setTimestamp()
             .setDescription(`** Kicked:** ${kickUser} (${kickUser.id})
             **Kicked by:** ${message.author}
