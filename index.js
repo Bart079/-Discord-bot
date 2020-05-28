@@ -105,15 +105,15 @@ bot.on("message", async message => {
                 msg.edit(embed)
             });
     }
-    if (command === "suggest"){
+    if (command === "suggest") {
         const type = args.join(" ")
         const thing = args.join(" ").slice(6)
         const thing2 = args.join(" ").slice(3)
-        const suggestion = new Discord.RichEmbed()
+        const suggestion = new Discord.MessageEmbed()
            .setTitle("New suggestion!")
        .setAuthor(`${message.author.tag}`, `${message.author.avatarURL}`)
         .addField(`${message.author.tag}`, `suggested: ${thing}`)
-        const suggestion2 = new Discord.RichEmbed()
+        const suggestion2 = new Discord.MessageEmbed()
            .setTitle("New suggestion!")
        .setAuthor(`${message.author.tag}`, `${message.author.avatarURL}`)
         .addField(`${message.author.tag}`, `suggested: ${thing2}`)
