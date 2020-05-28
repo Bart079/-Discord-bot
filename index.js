@@ -113,10 +113,17 @@ bot.on("message", async message => {
             .setTitle("Commands")
             .setDescription("With commands you can get info or you can do some other cool stuff")
             .setThumbnail(bot.user.displayAvatarURL())
-            .setColor("orangje")
+            .setColor(colors.orangje)
             .addFields(
-                {name: "Website", value:"https://sites.google.com/view/god-coding-v2-smoontie-gay/"}
+                {name: "Website", value:".site/.website"},
+                {name: "Youtube", value:".youtube"},
+                {name: "Swapper", value:".swapper"},
+                {name: "Meme", value:".meme"},
+                {name: "Cats", value:".cat"}
             )
+            .setTimestamp()
+            .setFooter("commands list",bot.user.displayAvatarURL());
+            
         return message.channel.send(CommandEmbed);    
     }
 
