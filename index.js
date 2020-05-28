@@ -51,7 +51,7 @@ bot.on("message", async message => {
 
 
     if(cmd === `${prefix}site`){
-        return message.reply("Best coding website right now click on the link and come in to heaven of codes https://sites.google.com/view/god-coding-v2-smoontie-gay/")
+        return message.channel.send(WebsiteEmbed);
     }
     if(cmd === `${prefix}serverinfo`){
         let sEmbed = new Discord.MessageEmbed()
