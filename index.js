@@ -178,7 +178,7 @@ bot.on("message", async message => {
         if (!kickUser) return message.reply("No user found.");
     
         var embed = new Discord.MessageEmbed()
-            .setColor("#ff0000")
+            .setColor(colors.red)
             .setThumbnail(kickUser.user.displayAvatarURL())
             .setFooter(message.member.displayName, message.author.displayAvatarURL())
             .setTimestamp()
@@ -253,7 +253,7 @@ bot.on("message", async message => {
         if (!banUser) return message.reply("No user found.");
     
         var embed = new Discord.MessageEmbed()
-            .setColor("#ff0000")
+            .setColor(colors.red)
             .setThumbnail(banUser.user.displayAvatarURL())
             .setFooter(message.member.displayName, message.author.displayAvatarURL())
             .setTimestamp()
