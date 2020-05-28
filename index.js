@@ -51,8 +51,21 @@ bot.on("message", async message => {
 
 
     if(cmd === `${prefix}site`){
-        return message.channel.send(WebsiteEmbed);
+
+        var siteEmbed = new Discord.MessageEmbed()
+            .setTitle("Site")
+            .setDescription("Best coding site right now click on the link and come in to heaven of codes")
+            .setThumbnail(message.guild.iconURL())
+            .setColor(colors.blue)
+            .addFields(
+                {name: "link", value:"https://sites.google.com/view/god-coding-v2-smoontie-gay/"},
+            )
+            .setTimestamp()
+            .setFooter("Site",bot.user.displayAvatarURL());
+            
+        return message.channel.send(siteEmbed);
     }
+
     if(cmd === `${prefix}serverinfo`){
         let sEmbed = new Discord.MessageEmbed()
         .setColor(colors.blue)
