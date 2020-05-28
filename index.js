@@ -38,9 +38,17 @@ bot.on("message", async message => {
             .setColor(colors.blue)
             .addFields(
                 {name: "link", value:"https://sites.google.com/view/god-coding-v2-smoontie-gay/"},
+                {name: "Skins", value:"❌"},
+                {name: "ID's", value:"✅"},
+                {name: "Backblings", value:"❌"},
+                {name: "Pickaxes", value:"✅"},
+                {name: "Emotes", value:"✅"},
+                {name: "wraps", value:"✅"},
+                {name: "weapons", value:"✅"},
+                {name: "Status", value:"✴️"},
             )
             .setTimestamp()
-            .setFooter("website",bot.user.displayAvatarURL());
+            .setFooter("website, ✴️ = half",bot.user.displayAvatarURL());
             
         return message.channel.send(WebsiteEmbed); 
     }
@@ -59,9 +67,17 @@ bot.on("message", async message => {
             .setColor(colors.blue)
             .addFields(
                 {name: "link", value:"https://sites.google.com/view/god-coding-v2-smoontie-gay/"},
+                {name: "Skins", value:"❌"},
+                {name: "ID's", value:"✅"},
+                {name: "Backblings", value:"❌"},
+                {name: "Pickaxes", value:"✅"},
+                {name: "Emotes", value:"✅"},
+                {name: "wraps", value:"✅"},
+                {name: "weapons", value:"✅"},
+                {name: "Status", value:"✴️"},
             )
             .setTimestamp()
-            .setFooter("Site",bot.user.displayAvatarURL());
+            .setFooter("Site, ✴️ = half",bot.user.displayAvatarURL());
             
         return message.channel.send(siteEmbed);
     }
