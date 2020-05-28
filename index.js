@@ -105,7 +105,7 @@ bot.on("message", async message => {
                 msg.edit(embed)
             });
     }
-    if (command === "suggest") {
+    if (cmd === `${prefix}suggest`) {
         const type = args.join(" ")
         const thing = args.join(" ").slice(6)
         const thing2 = args.join(" ").slice(3)
