@@ -105,7 +105,8 @@ bot.on("message", async message => {
                 msg.edit(embed)
             });
     }
-
+    
+    //commands help command
     if(cmd === `${prefix}commands`) {
 
         var CommandEmbed = new Discord.MessageEmbed()
@@ -116,7 +117,10 @@ bot.on("message", async message => {
             .addFields(
                 {name: "Website", value:"https://sites.google.com/view/god-coding-v2-smoontie-gay/"}
             )
+        return message.channel.send(CommandEmbed);    
     }
+
+    //kick command
     if (cmd === `${prefix}kick`) {
  
         const args = message.content.slice(prefix.length).split(/ +/);
