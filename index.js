@@ -2,8 +2,6 @@ const Discord = require('discord.js');
 const fetch = require('node-fetch');
 const config = require('./config.json');
 const colors = require('./colors.json');
-const fs = require('fs').promises;
-const path = require('path')
 const bot = new Discord.Client();
 
 
@@ -21,6 +19,7 @@ bot.on("message", async message => {
     let prefix = config.prefix;
     let messageArray = message.content.split(" ")
     let cmd = messageArray[0];
+    let command = messageArray[0];
     let args = messageArray.slice[0];
 
 
@@ -106,83 +105,84 @@ bot.on("message", async message => {
                 msg.edit(embed)
             });
     }
+    
+    // ban command
+    if(command === `${prefix}ban`) {
+ 
+        const argument = message.content.slice(prefix.length).split(/ +/);
+    
+        if (!argument[1]) return message.reply("No user given.");
+    
+        if (!argument[2]) return message.reply("Please give a reason.");
+    
+        if (!message.member.hasPermission("BAN_MEMBERS")) return message.reply("you can not use that command");
+    
+        if (!message.guild.me.hasPermission("BAN_MEMBERS")) return message.reply("you dont have premissions to do that");
+    
+        var banUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(argument[1]));
+    
+        var reason = argument.slice(2).join(" ");
+    
+        if (!banUser) return message.reply("No user found.");
+    
+        var embed = new Discord.MessageEmbed()
+            .setColor("#ff0000")
+            .setThumbnail(banUser.user.displayAvatarURL())
+            .setFooter(message.member.displayName, message.author.displayAvatarURL())
+            .setTimestamp()
+            .setDescription(`** Banned:** ${banUser} (${banUser.id})
+            **Banned by:** ${message.author}
+            **Reason: ** ${reason}`);
+    
+        var embedPrompt = new Discord.MessageEmbed()
+            .setColor("groen")
+            .setAuthor("Please react in 30 sec.")
+            .setDescription(`Are you sure you want to ban ${banUser}?`);
+    
+    
+        message.channel.send(embedPrompt).then(async msg => {
+    
+            var emoji = await promptMessage(msg, message.author, 30, ["✅", "❌"]);
+    
+    
+            // We kijken dat het de gebruiker is die het als eerste heeft uitgevoerd.
+            // message.channel.awaitMessages(m => m.author.id == message.author.id,
+            //     { max: 1, time: 30000 }).then(collected => {
+    
+            //         if (collected.first().content.toLowerCase() == 'yes') {
+            //             message.reply('Kick speler.');
+            //         }
+            //         else
+            //             message.reply('Geanuleerd');
+    
+            //     }).catch(() => {
+            //         message.reply('Geen antwoord na 30 sec, geanuleerd.');
+            //     });
+    
+    
+            if (emoji === "✅") {
+    
+                msg.delete();
+    
+               
+                banUser.ban(reason).catch(err => {
+                    if (err) return message.channel.send(`Something went wrong.`);
+                });
+    
+                message.channel.send(embed);
+    
+            } else if (emoji === "❌") {
+    
+                msg.delete();
+    
+                message.reply("Ban canceld").then(m => m.delete(5000));
+    
+            }
+    
+        });
+    }
 })  
 
-// ban command
-    if(cmd === `${prefix}ban`) {
- 
-    const argument = message.content.slice(prefix.length).split(/ +/);
-
-    if (!argument[1]) return message.reply("No user given.");
-
-    if (!argument[2]) return message.reply("Please give a reason.");
-
-    if (!message.member.hasPermission("BAN_MEMBERS")) return message.reply("you can not use that command");
-
-    if (!message.guild.me.hasPermission("BAN_MEMBERS")) return message.reply("you dont have premissions to do that");
-
-    var banUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(argument[1]));
-
-    var reason = argument.slice(2).join(" ");
-
-    if (!banUser) return message.reply("No user found.");
-
-    var embed = new Discord.MessageEmbed()
-        .setColor("#ff0000")
-        .setThumbnail(banUser.user.displayAvatarURL())
-        .setFooter(message.member.displayName, message.author.displayAvatarURL())
-        .setTimestamp()
-        .setDescription(`** Banned:** ${banUser} (${banUser.id})
-        **Banned by:** ${message.author}
-        **Reason: ** ${reason}`);
-
-    var embedPrompt = new Discord.MessageEmbed()
-        .setColor("groen")
-        .setAuthor("Please react in 30 sec.")
-        .setDescription(`Are you sure you want to ban ${banUser}?`);
-
-
-    message.channel.send(embedPrompt).then(async msg => {
-
-        var emoji = await promptMessage(msg, message.author, 30, ["✅", "❌"]);
-
-
-        // We kijken dat het de gebruiker is die het als eerste heeft uitgevoerd.
-        // message.channel.awaitMessages(m => m.author.id == message.author.id,
-        //     { max: 1, time: 30000 }).then(collected => {
-
-        //         if (collected.first().content.toLowerCase() == 'yes') {
-        //             message.reply('Kick speler.');
-        //         }
-        //         else
-        //             message.reply('Geanuleerd');
-
-        //     }).catch(() => {
-        //         message.reply('Geen antwoord na 30 sec, geanuleerd.');
-        //     });
-
-
-        if (emoji === "✅") {
-
-            msg.delete();
-
-           
-            banUser.ban(reason).catch(err => {
-                if (err) return message.channel.send(`Something went wrong.`);
-            });
-
-            message.channel.send(embed);
-
-        } else if (emoji === "❌") {
-
-            msg.delete();
-
-            message.reply("Ban canceld").then(m => m.delete(5000));
-
-        }
-
-    });
-}
 
    // // command export reader
    // (async function registerCommands(dir = 'commands') {
