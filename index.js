@@ -45,10 +45,10 @@ bot.on("message", async message => {
                 {name: "Emotes", value:"✅"},
                 {name: "wraps", value:"✅"},
                 {name: "weapons", value:"✅"},
-                {name: "Status", value:"✴️"},
+                {name: "Status", value:"🟧"},
             )
             .setTimestamp()
-            .setFooter("website, ✴️ = half",bot.user.displayAvatarURL());
+            .setFooter("website, 🟧 = half",bot.user.displayAvatarURL());
             
         return message.channel.send(WebsiteEmbed); 
     }
@@ -74,10 +74,10 @@ bot.on("message", async message => {
                 {name: "Emotes", value:"✅"},
                 {name: "wraps", value:"✅"},
                 {name: "weapons", value:"✅"},
-                {name: "Status", value:"✴️"},
+                {name: "Status", value:"🟧"},
             )
             .setTimestamp()
-            .setFooter("Site, ✴️ = half",bot.user.displayAvatarURL());
+            .setFooter("Site, 🟧 = half",bot.user.displayAvatarURL());
             
         return message.channel.send(siteEmbed);
     }
