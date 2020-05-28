@@ -105,7 +105,118 @@ bot.on("message", async message => {
                 msg.edit(embed)
             });
     }
+    if (command === "suggest"){
+        const type = args.join(" ")
+        const thing = args.join(" ").slice(6)
+        const thing2 = args.join(" ").slice(3)
+        const suggestion = new Discord.RichEmbed()
+           .setTitle("New suggestion!")
+       .setAuthor(`${message.author.tag}`, `${message.author.avatarURL}`)
+        .addField(`${message.author.tag}`, `suggested: ${thing}`)
+        const suggestion2 = new Discord.RichEmbed()
+           .setTitle("New suggestion!")
+       .setAuthor(`${message.author.tag}`, `${message.author.avatarURL}`)
+        .addField(`${message.author.tag}`, `suggested: ${thing2}`)
+        if (!typ){
+         message.reply("enter suggestion type, which you want to suggest!");
+          return;
+        }
+                if (type === "server"){
+                   if (!thing){
+         message.reply("enter thing you want to suggest!");
+          return;
+        }
+          client.channels.get("channel_id").send(suggestion);
+          return;
+        }
+        if (type === "bot"){
+          if (!suggestion2){
+         message.reply("enter thing you want to suggest!");
+          return;
+        }
+          client.channels.get("another_channel_id").send(suggestion2);
+          return;
+        }
+                else if (type !== "bot" || type !== "server"){
+         message.reply("invalid suggestion type!"); 
+        return;
+            }
+      }
+
+    if (cmd === `${prefix}kick`) {
+ 
+        const args = message.content.slice(prefix.length).split(/ +/);
     
+        if (!message.member.hasPermission("KICK_MEMBERS")) return message.reply("sorry jij kan dit niet");
+    
+        if (!message.guild.me.hasPermission("KICK_MEMBERS")) return message.reply("Geen perms");
+    
+        if (!args[1]) return message.reply("Geen gebruiker opgegeven.");
+    
+        if (!args[2]) return message.reply("Gelieve een redenen op te geven.");
+    
+        var kickUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[1]));
+    
+        var reason = args.slice(2).join(" ");
+    
+        if (!kickUser) return message.reply("Kan de gebruiker niet vinden.");
+    
+        var embed = new discord.MessageEmbed()
+            .setColor("#ff0000")
+            .setThumbnail(kickUser.user.displayAvatarURL)
+            .setFooter(message.member.displayName, message.author.displayAvatarURL)
+            .setTimestamp()
+            .setDescription(`** Gekickt:** ${kickUser} (${kickUser.id})
+            **Gekickt door:** ${message.author}
+            **Redenen: ** ${reason}`);
+    
+        var embedPrompt = new discord.MessageEmbed()
+            .setColor("GREEN")
+            .setAuthor("Gelieve te reageren binnen 30 sec.")
+            .setDescription(`Wil je ${kickUser} kicken?`);
+    
+    
+        message.channel.send(embedPrompt).then(async msg => {
+    
+            var emoji = await promptMessage(msg, message.author, 30, ["✅", "❌"]);
+    
+    
+            // We kijken dat het de gebruiker is die het als eerste heeft uitgevoerd.
+            // message.channel.awaitMessages(m => m.author.id == message.author.id,
+            //     { max: 1, time: 30000 }).then(collected => {
+    
+            //         if (collected.first().content.toLowerCase() == 'yes') {
+            //             message.reply('Kick speler.');
+            //         }
+            //         else
+            //             message.reply('Geanuleerd');
+    
+            //     }).catch(() => {
+            //         message.reply('Geen antwoord na 30 sec, geanuleerd.');
+            //     });
+    
+    
+            if (emoji === "✅") {
+    
+                msg.delete();
+    
+                kickUser.kick(reason).catch(err => {
+                    if (err) return message.channel.send(`Er is iets foutgegaan.`);
+                });
+    
+                message.reply(embed);
+    
+            } else if (emoji === "❌") {
+    
+                msg.delete();
+    
+                message.reply("Kick geanuleerd").then(m => m.delete(5000));
+    
+            }
+    
+        });
+    }
+
     // ban command
     if(command === `${prefix}ban`) {
  
