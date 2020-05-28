@@ -29,9 +29,27 @@ bot.on("message", async message => {
         msg.edit(`Pong! Latency is ${msg.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`);
     }
 
-    if(cmd === `${prefix}website`){
-        return message.reply("Best coding website right now click on the link and come in to heaven of codes https://sites.google.com/view/god-coding-v2-smoontie-gay/")
+    if(cmd === `${prefix}website`) {
+
+        var WebsiteEmbed = new Discord.MessageEmbed()
+            .setTitle("Website")
+            .setDescription("Best coding website right now click on the link and come in to heaven of codes")
+            .setThumbnail(message.guild.iconURL())
+            .setColor(colors.blue)
+            .addFields(
+                {name: "link", value:"https://sites.google.com/view/god-coding-v2-smoontie-gay/"},
+            )
+            .setTimestamp()
+            .setFooter("website",bot.user.displayAvatarURL());
+            
+        return message.channel.send(WebsiteEmbed); 
     }
+
+    //if(cmd === `${prefix}website`){
+       // return message.reply("Best coding website right now click on the link and come in to heaven of codes https://sites.google.com/view/god-coding-v2-smoontie-gay/")
+    //}
+
+
     if(cmd === `${prefix}site`){
         return message.reply("Best coding website right now click on the link and come in to heaven of codes https://sites.google.com/view/god-coding-v2-smoontie-gay/")
     }
