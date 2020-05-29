@@ -10,7 +10,7 @@ const bot = new Discord.Client();
 
 bot.on("ready", async () => {
     console.log(`${bot.user.username} is online!`)
-    bot.user.setActivity("Over God Coding | .", {type: "WATCHING"});
+    bot.user.setActivity("Over God Coding | .help", {type: "WATCHING"});
 })
 
 bot.on("message", async message => {
@@ -324,6 +324,52 @@ bot.on("message", async message => {
     
         });
     }
+
+
+
+
+// suggestion command
+if (cmd === `${prefix}suggest`) {
+ 
+    const args = message.content.slice(prefix.length).split(/ +/);
+
+    var suggestion = args.slice(2).join(" ");
+
+    var embed = new Discord.MessageEmbed()
+        .setColor(colors.yellow)
+        .setThumbnail(messsage.guild.iconURL())
+        .setFooter(message.member.displayName, message.author.displayAvatarURL())
+        .setTimestamp()
+        .setDescription(`**Suggestion: ** ${suggestion}`);
+
+    var embedPrompt = new Discord.MessageEmbed()
+        .setColor("GREEN")
+        .setAuthor("Please react in 30 sec.")
+        .setDescription(`Are you sure you want to suggest this?`);
+
+
+    message.channel.send(embedPrompt).then(async msg => {
+
+        var emoji = await promptMessage(msg, message.author, 30, ["✅", "❌"]);
+        console.log();
+
+        if (emoji === "✅") {
+
+            msg.delete();
+
+            message.reply(embed);
+
+        } else if (emoji === "❌") {
+
+            msg.delete();
+
+            message.reply("suggestion Canceld").then(m => m.delete(5000));
+
+        }
+
+    });
+}
+
 })  
 
 
