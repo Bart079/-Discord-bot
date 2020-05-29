@@ -137,6 +137,11 @@ bot.on("message", async message => {
                 msg.edit(embed)
             });
     }
+    if (cmd === 'cat') {
+        const { file } = await fetch('https://aws.random.cat/meow').then(response => response.json());
+    
+        message.channel.send(file);
+    }
 
 
     if(cmd === `${prefix}cat`) {
@@ -145,8 +150,8 @@ bot.on("message", async message => {
             .then(res => res.json())
             .then(json => {
                 let embed = new Discord.MessageEmbed()
-                    .setTitle(json.title)
-                    .setColor(colors.red)
+                    .setTitle("cute cats")
+                    .setColor(colors.rose)
                     .setImage(json.url)
                     .setFooter(`Link: ${json.postLink} | Subreddit: ${json.subreddit}`)
                 msg.edit(embed)
