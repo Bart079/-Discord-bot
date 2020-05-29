@@ -342,33 +342,29 @@ if (cmd === `${prefix}suggest`) {
         .setTimestamp()
         .setDescription(`**Suggestion: ** ${suggestion}`);
 
-        const embedPrompt = new Discord.MessageEmbed()
+    const embedPrompt = new Discord.MessageEmbed()
         .setColor("GREEN")
         .setAuthor("Please react in 30 sec.")
         .setDescription(`Are you sure you want to suggest this?`);
 
 
-    message.channel.send(embedPrompt).then(async msg => {
+    const initialMsg = await message.channel.send(embedPrompt)
 
-        const emoji = await promptMessage(msg, message.author, 30, ["✅", "❌"]);
-        console.log();
+    const emoji = await promptMessage(msg, message.author, 30, ["✅", "❌"])
 
-        if (emoji === "✅") {
 
-            msg.delete();
+    if (emoji === "✅") {
 
-            message.reply(embed);
+      initialMsg.delete();
+      message.reply(embed);
 
-        } else if (emoji === "❌") {
+    } else if (emoji === "❌") {
 
-            msg.delete();
+      initialMsg.delete();
+      message.reply("suggestion Canceld").then(m => m.delete(5000));
 
-            message.reply("suggestion Canceld").then(m => m.delete(5000));
-
-        }
-
-    });
-}
+    }
+} 
 
 })  
 
