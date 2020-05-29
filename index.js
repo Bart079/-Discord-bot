@@ -333,16 +333,16 @@ if (cmd === `${prefix}suggest`) {
  
     const args = message.content.slice(prefix.length).split(/ +/);
 
-    var suggestion = args.slice(2).join(" ");
+    const suggestion = args.slice(2).join(" ");
 
-    var embed = new Discord.MessageEmbed()
+    const embed = new Discord.MessageEmbed()
         .setColor(colors.yellow)
         .setThumbnail(messsage.guild.iconURL())
         .setFooter(message.member.displayName, message.author.displayAvatarURL())
         .setTimestamp()
         .setDescription(`**Suggestion: ** ${suggestion}`);
 
-    var embedPrompt = new Discord.MessageEmbed()
+        const embedPrompt = new Discord.MessageEmbed()
         .setColor("GREEN")
         .setAuthor("Please react in 30 sec.")
         .setDescription(`Are you sure you want to suggest this?`);
@@ -350,7 +350,7 @@ if (cmd === `${prefix}suggest`) {
 
     message.channel.send(embedPrompt).then(async msg => {
 
-        var emoji = await promptMessage(msg, message.author, 30, ["✅", "❌"]);
+        const emoji = await promptMessage(msg, message.author, 30, ["✅", "❌"]);
         console.log();
 
         if (emoji === "✅") {
