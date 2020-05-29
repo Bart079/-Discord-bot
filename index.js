@@ -137,11 +137,6 @@ bot.on("message", async message => {
                 msg.edit(embed)
             });
     }
-    if (cmd === 'cat') {
-        const { file } = await fetch('https://aws.random.cat/meow').then(response => response.json());
-    
-        message.channel.send(file);
-    }
 
 
     if(cmd === `${prefix}cat`) {
@@ -157,6 +152,35 @@ bot.on("message", async message => {
                 msg.edit(embed)
             });
     }
+    if(cmd === `${prefix}pussy`) {
+        let msg = await message.channel.send("Fetching a cute cat, please wait a second!");
+        fetch('http://aws.random.cat/meow')
+            .then(res => res.json())
+            .then(json => {
+                let embed = new Discord.MessageEmbed()
+                    .setTitle("cute cats")
+                    .setColor(colors.rose)
+                    .setImage(json.file)
+                    .setFooter(`Server: God coding`, bot.user.displayAvatarURL());
+                msg.edit(embed)
+            });
+    }
+
+    if(cmd === `${prefix}dog`) {
+        let msg = await message.channel.send("Fetching a cute dog, please wait a second!");
+        fetch('https://dog.ceo/api/breeds/image/random')
+            .then(res => res.json())
+            .then(json => {
+                let embed = new Discord.MessageEmbed()
+                    .setTitle("cute dogs")
+                    .setColor(colors.paars)
+                    .setImage(json.message)
+                    .setFooter(`Server: God coding`, bot.user.displayAvatarURL());
+                msg.edit(embed)
+            });
+    }
+
+    
     
     //commands help command
     if(cmd === `${prefix}commands`) {
