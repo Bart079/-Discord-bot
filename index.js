@@ -152,7 +152,7 @@ bot.on("message", async message => {
                 let embed = new Discord.MessageEmbed()
                     .setTitle("cute cats")
                     .setColor(colors.rose)
-                    .setImage(json.url)
+                    .setImage(JSON.iconURL)
                     .setFooter(`Link: ${json.postLink} | Subreddit: ${json.subreddit}`)
                 msg.edit(embed)
             });
