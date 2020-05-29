@@ -180,7 +180,7 @@ bot.on("message", async message => {
             });
     }
 
-    
+    //lololol
     
     //commands help command
     if(cmd === `${prefix}commands`) {
