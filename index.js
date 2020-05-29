@@ -153,7 +153,7 @@ bot.on("message", async message => {
                     .setTitle("cute cats")
                     .setColor(colors.rose)
                     .setImage(JSON.iconURL)
-                    .setFooter(`Link: ${json.postLink} | Subreddit: ${json.subreddit}`)
+                    .setFooter(`Server: God coding |`, bot.user.displayAvatarURL());
                 msg.edit(embed)
             });
     }
