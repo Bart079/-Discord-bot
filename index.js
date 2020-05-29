@@ -116,7 +116,7 @@ bot.on("message", async message => {
     }
     if(cmd === `${prefix}&`){
         return message.reply("\n```Invalid argument``` ")
-    }
+    }   
     //if(cmd === `${prefix}commands`){
     //return message.reply("\n```commands = .commands``` \n```prefix = . ```  \n```website = .website```   \n```youtube = .youtube```    \n```swapper download = .swapper```  \n```memes = .meme```   \n```cat = .cat```")
     //}
@@ -124,6 +124,8 @@ bot.on("message", async message => {
         return message.reply("\n```Your gay``` ")
     }
 
+
+    // meme meme
     if(cmd === `${prefix}meme`) {
         let msg = await message.channel.send("Fetching a meme, please wait a second!");
         fetch('https://meme-api.herokuapp.com/gimme')
@@ -138,7 +140,7 @@ bot.on("message", async message => {
             });
     }
 
-
+    //cat commands
     if(cmd === `${prefix}cat`) {
         let msg = await message.channel.send("Fetching a cute cat, please wait a second!");
         fetch('http://aws.random.cat/meow')
@@ -165,7 +167,8 @@ bot.on("message", async message => {
                 msg.edit(embed)
             });
     }
-
+    
+    //dog command
     if(cmd === `${prefix}dog`) {
         let msg = await message.channel.send("Fetching a cute dog, please wait a second!");
         fetch('https://dog.ceo/api/breeds/image/random')
@@ -180,7 +183,7 @@ bot.on("message", async message => {
             });
     }
 
-    //lololol
+    
     
     //commands help command
     if(cmd === `${prefix}commands`) {
