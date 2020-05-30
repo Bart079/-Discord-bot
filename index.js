@@ -365,7 +365,7 @@ if (cmd === `${prefix}suggest`) {
  
     const args = message.content.slice(prefix.length).split(/ +/);
 
-    const suggestion = args.slice(2).join(" ");
+    const suggestion = args.slice.join(" ");
 
     console.log()
     const embed = new Discord.MessageEmbed()
