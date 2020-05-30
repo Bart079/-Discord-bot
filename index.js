@@ -363,7 +363,7 @@ bot.on("message", async message => {
 // suggestion command
 if (cmd === `${prefix}suggest`) {
  
-    message.delete()
+    message.delete();
 
     const args = message.content.slice(prefix.length).split(/ +/);
 
