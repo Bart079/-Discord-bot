@@ -363,6 +363,8 @@ bot.on("message", async message => {
 // suggestion command
 if (cmd === `${prefix}suggest`) {
  
+    message.delete()
+
     const args = message.content.slice(prefix.length).split(/ +/);
 
     const suggestion = args.slice(1).join(" ");
@@ -377,7 +379,7 @@ if (cmd === `${prefix}suggest`) {
         .setColor("GREEN")
         .setAuthor("Please react in 30 sec.")
         .setDescription(`Are you sure you want to suggest this?`);
-
+        
 
         message.channel.send(embedPrompt).then(async msg => {
     
