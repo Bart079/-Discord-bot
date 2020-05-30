@@ -390,7 +390,6 @@ if (cmd === `${prefix}suggest`) {
             if (emoji === "✅") {
     
                 msg.delete();
-                command.delete();
     
                 message.channel.send(embed);
     
