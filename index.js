@@ -367,7 +367,7 @@ if (cmd === `${prefix}suggest`) {
 
     const suggestion = args.join(" ");
 
-    console.log()
+    
     const embed = new Discord.MessageEmbed()
         .setColor(colors.yellow)
         .setThumbnail(message.guild.iconURL())
