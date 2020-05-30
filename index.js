@@ -126,19 +126,19 @@ bot.on("message", async message => {
 
 
     // meme meme
-    if(cmd === `${prefix}meme`) {
-        let msg = await message.channel.send("Fetching a meme, please wait a second!");
-        fetch('https://meme-api.herokuapp.com/gimme')
-            .then(res => res.json())
-            .then(json => {
-                let embed = new Discord.MessageEmbed()
-                    .setTitle(json.title)
-                    .setColor(colors.red)
-                    .setImage(json.url)
-                    .setFooter(`Link: ${json.postLink} | Subreddit: ${json.subreddit}`)
-                msg.edit(embed)
-            });
-    }
+   // if(cmd === `${prefix}meme`) {
+    //    let msg = await message.channel.send("Fetching a meme, please wait a second!");
+    //    fetch('https://meme-api.herokuapp.com/gimme')
+    //        .then(res => res.json())
+     //       .then(json => {
+    //            let embed = new Discord.MessageEmbed()
+    //                .setTitle(json.title)
+    //                .setColor(colors.red)
+     //               .setImage(json.url)
+     //               .setFooter(`Link: ${json.postLink} | Subreddit: ${json.subreddit}`)
+     //           msg.edit(embed)
+    //        });
+   // }
 
     //cat commands
     if(cmd === `${prefix}cat`) {
@@ -404,6 +404,33 @@ if (cmd === `${prefix}suggest`) {
     
         });
     }
+
+
+
+    var Channel = message.channel.name
+
+if (message.content === "command") {
+    if(Channel != "Channel name here") {
+        message.channel.send('Cannot use command here, ' + message.author);
+    } else {
+    if(cmd === `${prefix}meme`) {
+        let msg = await message.channel.send("Fetching a meme, please wait a second!");
+        fetch('https://meme-api.herokuapp.com/gimme')
+            .then(res => res.json())
+            .then(json => {
+                let embed = new Discord.MessageEmbed()
+                    .setTitle(json.title)
+                    .setColor(colors.red)
+                    .setImage(json.url)
+                    .setFooter(`Link: ${json.postLink} | Subreddit: ${json.subreddit}`)
+                msg.edit(embed)
+            });
+    }
+    }
+}
+
+
+
 
 })  
 
