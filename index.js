@@ -367,6 +367,7 @@ if (cmd === `${prefix}suggest`) {
 
     const suggestion = args.slice(1).join(" ");
 
+    msg.delete();
     
     const embed = new Discord.MessageEmbed()
         .setColor(colors.yellow)
