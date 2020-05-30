@@ -381,23 +381,29 @@ if (cmd === `${prefix}suggest`) {
         .setDescription(`Are you sure you want to suggest this?`);
 
 
-    const initialMsg = await message.channel.send(embedPrompt)
+        message.channel.send(embedPrompt).then(async msg => {
+    
+            var emoji = await promptMessage(msg, message.author, 30, ["✅", "❌"]);
+    
 
-    const emoji = await promptMessage(msg, message.author, 30, ["✅", "❌"])
-
-
-    if (emoji === "✅") {
-
-      initialMsg.delete();
-      message.reply(embed);
-
-    } else if (emoji === "❌") {
-
-      initialMsg.delete();
-      message.reply("suggestion Canceld").then(m => m.delete(5000));
-
+    
+    
+            if (emoji === "✅") {
+    
+                msg.delete();
+    
+                message.channel.send(embed);
+    
+            } else if (emoji === "❌") {
+    
+                msg.delete();
+    
+                message.reply("suggestion canceld").then(m => m.delete(5000));
+    
+            }
+    
+        });
     }
-} 
 
 })  
 
