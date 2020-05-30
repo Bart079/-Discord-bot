@@ -409,8 +409,8 @@ if (cmd === `${prefix}suggest`) {
 
     var Channel = message.channel.name
 
-if (message.content === "command") {
-    if(Channel != "Channel name here") {
+if (message.content === "meme") {
+    if(Channel != "🐸memes🐸") {
         message.channel.send('Cannot use command here, ' + message.author);
     } else {
     if(cmd === `${prefix}meme`) {
