@@ -370,7 +370,6 @@ if (cmd === `${prefix}suggest`) {
     
     const embed = new Discord.MessageEmbed()
         .setColor(colors.yellow)
-        .setThumbnail(message.guild.iconURL())
         .setFooter(message.member.displayName, message.author.displayAvatarURL())
         .setTimestamp()
         .setDescription(`**Suggestion: ** ${suggestion}`);
