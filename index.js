@@ -38,7 +38,7 @@ bot.on("message", async message => {
             .setColor(colors.blue)
             .addFields(
                 {name: "link", value:"https://sites.google.com/view/god-coding-v2-smoontie-gay/"},
-                {name: "Skins", value:"❌"},
+                {name: "Skins", value:"✅"},
                 {name: "ID's", value:"✅"},
                 {name: "Backblings", value:"❌"},
                 {name: "Pickaxes", value:"✅"},
@@ -67,7 +67,7 @@ bot.on("message", async message => {
             .setColor(colors.blue)
             .addFields(
                 {name: "link", value:"https://sites.google.com/view/god-coding-v2-smoontie-gay/"},
-                {name: "Skins", value:"❌"},
+                {name: "Skins", value:"✅"},
                 {name: "ID's", value:"✅"},
                 {name: "Backblings", value:"❌"},
                 {name: "Pickaxes", value:"✅"},
@@ -403,6 +403,30 @@ if (cmd === `${prefix}suggest`) {
             }
     
         });
+    }
+    // nitro boost command
+    if(cmd === `${prefix}nitro`) {
+
+        var WebsiteEmbed = new Discord.MessageEmbed()
+            .setTitle("Nitro Boosters")
+            .setDescription("Special stuff that you get as a nitro booster")
+            .setThumbnail(message.guild.iconURL())
+            .setColor(colors.blue)
+            .addFields(
+                {name: ":nitroboost:1:", value:"https://sites.google.com/view/god-coding-v2-smoontie-gay/"},
+                {name: "Skins", value:"✅"},
+                {name: "ID's", value:"✅"},
+                {name: "Backblings", value:"❌"},
+                {name: "Pickaxes", value:"✅"},
+                {name: "Emotes", value:"✅"},
+                {name: "wraps", value:"✅"},
+                {name: "weapons", value:"✅"},
+                {name: "Status", value:"🟧"},
+            )
+            .setTimestamp()
+            .setFooter("website, 🟧 = half",bot.user.displayAvatarURL());
+            
+        return message.channel.send(WebsiteEmbed); 
     }
 
 })  
