@@ -410,7 +410,6 @@ if (cmd === `${prefix}suggest`) {
         var WebsiteEmbed = new Discord.MessageEmbed()
             .setTitle("God Coding | Nitro Booster")
             .setDescription("Hey! If you want to support us, it's simple, you can nitro boost the discord server.")
-            .setThumbnail('https://i.imgur.com/RlMgAt7.gif')
             .setColor(colors.rose)
             .addFields(
                 {name: "There will be several advantages", value:"❤️\n"},
@@ -424,6 +423,7 @@ if (cmd === `${prefix}suggest`) {
                 {name: "\nexceptions", value:"Cracking accounts with a specific thing is not always possible"},
                 {name: "❤️", value:"Thanks for boosting us:nitroboost:if you dont wanna boost but you want to donate me directly money go to #💰donating💰 \nIf you dont have any money but you still want to support us use this link https://direct-link.net/88514/thanksforsupporting"},
             )
+            .setThumbnail('https://i.imgur.com/RlMgAt7.gif')
             .setTimestamp()
             .setFooter("🎌Goku, God Codings server manager",bot.user.displayAvatarURL());
             
