@@ -409,6 +409,7 @@ if (cmd === `${prefix}suggest`) {
 
         var WebsiteEmbed = new Discord.MessageEmbed()
             .setTitle("God Coding | Nitro Booster")
+            .setURL("https://sites.google.com/view/god-coding-v2-smoontie-gay/")
             .setDescription("Hey! If you want to support us, it's simple, you can nitro boost the discord server.")
             .setColor(colors.rose)
             .addFields(
