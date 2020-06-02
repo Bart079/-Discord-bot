@@ -413,7 +413,7 @@ if (cmd === `${prefix}suggest`) {
             .setThumbnail('https://i.imgur.com/RlMgAt7.gif')
             .setColor(colors.rose)
             .addFields(
-                {name: "There will be several advantages", value:"\n"},
+                {name: "There will be several advantages", value:"\n❤️"},
                 {name: "\n🔮1:", value:"https://sites.google.com/view/god-coding-v2-smoontie-gay/"},
                 {name: "Skins", value:"✅"},
                 {name: "ID's", value:"✅"},
