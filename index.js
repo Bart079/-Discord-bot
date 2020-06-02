@@ -414,8 +414,7 @@ if (cmd === `${prefix}suggest`) {
             .setColor(colors.rose)
             .addFields(
                 {name: "There will be several advantages:", value:""},
-                {name: "", value:""},
-                {name: "🔮1:", value:"https://sites.google.com/view/god-coding-v2-smoontie-gay/"},
+                {name: "\n🔮1:", value:"https://sites.google.com/view/god-coding-v2-smoontie-gay/"},
                 {name: "Skins", value:"✅"},
                 {name: "ID's", value:"✅"},
                 {name: "Backblings", value:"❌"},
