@@ -407,6 +407,8 @@ if (cmd === `${prefix}suggest`) {
     // nitro boost command
     if(cmd === `${prefix}nitro`) {
 
+        message.delete();
+
         var WebsiteEmbed = new Discord.MessageEmbed()
             .setTitle("God Coding | Nitro Booster")
             .setURL("https://sites.google.com/view/god-coding-v2-smoontie-gay/")
