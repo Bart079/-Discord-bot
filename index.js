@@ -410,7 +410,7 @@ if (cmd === `${prefix}suggest`) {
         var WebsiteEmbed = new Discord.MessageEmbed()
             .setTitle("God Coding | Nitro Booster")
             .setDescription("Hey! If you want to support us, it's simple, you can nitro boost the discord server.")
-            .setThumbnail("https://i.imgur.com/RlMgAt7.gif"())
+            .setThumbnail('https://i.imgur.com/RlMgAt7.gif'())
             .setColor(colors.rose)
             .addFields(
                 {name: "There will be several advantages:", value:""},
