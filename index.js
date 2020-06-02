@@ -408,12 +408,14 @@ if (cmd === `${prefix}suggest`) {
     if(cmd === `${prefix}nitro`) {
 
         var WebsiteEmbed = new Discord.MessageEmbed()
-            .setTitle("Nitro Boosters")
-            .setDescription("Special stuff that you get as a nitro booster")
-            .setThumbnail(message.guild.iconURL())
-            .setColor(colors.blue)
+            .setTitle("God Coding | Nitro Booster")
+            .setDescription("Hey! If you want to support us, it's simple, you can nitro boost the discord server.")
+            .setThumbnail("https://i.imgur.com/RlMgAt7.gif"())
+            .setColor(colors.rose)
             .addFields(
-                {name: ":nitroboost:1:", value:"https://sites.google.com/view/god-coding-v2-smoontie-gay/"},
+                {name: "There will be several advantages:", value:""},
+                {name: "", value:""},
+                {name: "🔮1:", value:"https://sites.google.com/view/god-coding-v2-smoontie-gay/"},
                 {name: "Skins", value:"✅"},
                 {name: "ID's", value:"✅"},
                 {name: "Backblings", value:"❌"},
@@ -424,7 +426,7 @@ if (cmd === `${prefix}suggest`) {
                 {name: "Status", value:"🟧"},
             )
             .setTimestamp()
-            .setFooter("website, 🟧 = half",bot.user.displayAvatarURL());
+            .setFooter("🎌Goku, God Codings server manager",bot.user.displayAvatarURL());
             
         return message.channel.send(WebsiteEmbed); 
     }
