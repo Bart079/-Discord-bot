@@ -414,15 +414,15 @@ if (cmd === `${prefix}suggest`) {
             .setColor(colors.rose)
             .addFields(
                 {name: "There will be several advantages", value:"❤️\n"},
-                {name: "\n🔮1:", value:"https://sites.google.com/view/god-coding-v2-smoontie-gay/"},
-                {name: "Skins", value:"✅"},
-                {name: "ID's", value:"✅"},
-                {name: "Backblings", value:"❌"},
-                {name: "Pickaxes", value:"✅"},
-                {name: "Emotes", value:"✅"},
-                {name: "wraps", value:"✅"},
-                {name: "weapons", value:"✅"},
-                {name: "Status", value:"🟧"},
+                {name: "\n🔮1:", value:"Best support and fastest (for hxd)"},
+                {name: "\n🔮2", value:"Special methods for skin swapping"},
+                {name: "\n🔮3", value:"Earlier access for site updates"},
+                {name: "\n🔮4", value:"Beta release for swapper (when its ready for a beta release)"},
+                {name: "\n🔮5", value:"a special chat with only cool kids in #😎kool-chat😎 "},
+                {name: "\n🔮6", value:"A special role @『🌸Server Booster🌸』 above all other roles"},
+                {name: "\n🔮7", value:"Some special premium acc like Netflix, Nordvpn, Fn Acc, etc."},
+                {name: "\nexceptions", value:"Cracking accounts with a specific thing is not always possible"},
+                {name: "❤️", value:"Thanks for boosting us:nitroboost:if you dont wanna boost but you want to donate me directly money go to #💰donating💰 \nIf you dont have any money but you still want to support us use this link https://direct-link.net/88514/thanksforsupporting"},
             )
             .setTimestamp()
             .setFooter("🎌Goku, God Codings server manager",bot.user.displayAvatarURL());
