@@ -37,15 +37,15 @@ bot.on("message", async message => {
             .setThumbnail(message.guild.iconURL())
             .setColor(colors.blue)
             .addFields(
-                {name: "link", value:"https://sites.google.com/view/god-coding-v2-smoontie-gay/"},
+                {name: "link", value:"https://sites.google.com/view/god-coding-v2-you-bettercredit/"},
                 {name: "Skins", value:"✅"},
                 {name: "ID's", value:"✅"},
-                {name: "Backblings", value:"❌"},
+                {name: "Backblings", value:"✅"},
                 {name: "Pickaxes", value:"✅"},
                 {name: "Emotes", value:"✅"},
                 {name: "wraps", value:"✅"},
                 {name: "weapons", value:"✅"},
-                {name: "Status", value:"🟧"},
+                {name: "Status", value:"✅"},
             )
             .setTimestamp()
             .setFooter("website, 🟧 = half",bot.user.displayAvatarURL());
@@ -66,15 +66,15 @@ bot.on("message", async message => {
             .setThumbnail(message.guild.iconURL())
             .setColor(colors.blue)
             .addFields(
-                {name: "link", value:"https://sites.google.com/view/god-coding-v2-smoontie-gay/"},
-                {name: "Skins", value:"✅"},
+                {name: "link", value:"https://sites.google.com/view/god-coding-v2-you-bettercredit/"},
+                {name: "Skins", value:"🟧"},
                 {name: "ID's", value:"✅"},
-                {name: "Backblings", value:"❌"},
+                {name: "Backblings", value:"✅"},
                 {name: "Pickaxes", value:"✅"},
                 {name: "Emotes", value:"✅"},
                 {name: "wraps", value:"✅"},
                 {name: "weapons", value:"✅"},
-                {name: "Status", value:"🟧"},
+                {name: "Status", value:"✅"},
             )
             .setTimestamp()
             .setFooter("Site, 🟧 = half",bot.user.displayAvatarURL());
@@ -411,7 +411,7 @@ if (cmd === `${prefix}suggest`) {
 
         var WebsiteEmbed = new Discord.MessageEmbed()
             .setTitle("God Coding | Nitro Booster")
-            .setURL("https://sites.google.com/view/god-coding-v2-smoontie-gay/")
+            .setURL("https://sites.google.com/view/god-coding-v2-you-bettercredit/")
             .setDescription("Hey! If you want to support us, it's simple, you can nitro boost the discord server.")
             .setColor(colors.rose)
             .addFields(
