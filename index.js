@@ -22,6 +22,16 @@ bot.on("message", async message => {
     let command = messageArray[0];
     let args = messageArray.slice[0];
 
+    bot.on('guildMemberAdd', member => {
+        const exampleEmbed = new Discord.MessageEmbed()
+            .setColor('#0099ff')
+            .setTitle('Welcome To God Coding')
+            .addField('', member.nickname)
+            .setImage(member.user.avatarURL())
+    
+        member.guild.channels.get('605000838573850635').send(exampleEmbed);
+    })
+
 
     //commands
     if(cmd === `${prefix}ping`) {
