@@ -24,12 +24,12 @@ bot.on("message", async message => {
 
     bot.on('guildMemberAdd', member => {
         const exampleEmbed = new Discord.MessageEmbed()
-            .setColor('#0099ff')
+            .setColor(colors.groen)
             .setTitle('Welcome To God Coding')
             .addField('', member.nickname)
             .setImage(member.user.avatarURL())
     
-        member.guild.channels.get('605000838573850635').send(exampleEmbed);
+        member.guild.channels.get('705345463053975553').send(exampleEmbed);
     })
 
 
