@@ -21,16 +21,7 @@ bot.on("message", async message => {
     let cmd = messageArray[0];
     let command = messageArray[0];
     let args = messageArray.slice[0];
-
-    bot.on('guildMemberAdd', member => {
-        const exampleEmbed = new Discord.MessageEmbed()
-            .setColor(colors.groen)
-            .setTitle('Welcome To God Coding')
-            .addField('', member.nickname)
-            .setImage(member.user.avatarURL())
     
-        member.guild.channels.get('705345463053975553').send(exampleEmbed);
-    })
 
 
     //commands
